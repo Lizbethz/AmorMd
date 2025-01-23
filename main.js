@@ -232,18 +232,15 @@ if (opts['server']) (await import('./server.js')).default(global.conn, PORT);
 function clearTmp() {
   const tmp = [join(__dirname, './src/tmp')];
   const filename = [];
-  function clearTmp() {
   try {
-    const files = fs.readdirSync('/home/container/src/tmp');
-    files.forEach((file) => {
-      // ...
-    });
-  } catch (err) {
-    if (err.code === 'ENOENT') {
-      console.log('El directorio no existe');
-    } else {
-      console.log('Error inesperado:', err);
-    }
+  fs.readdirSync('/home/container/src/tmp').forEach((file) => {
+    // código existente aquí
+  });
+} catch (err) {
+  if (err.code === 'ENOENT') {
+    console.log('El directorio no existe');
+  } else {
+    console.log('Error inesperado:', err);
   }
   }
   return filename.map((file) => {
